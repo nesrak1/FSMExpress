@@ -1,4 +1,4 @@
-﻿using AddressablesTools;
+using AddressablesTools;
 using AddressablesTools.Catalog;
 using AssetsTools.NET.Extra;
 using Avalonia.Platform.Storage;
@@ -48,6 +48,11 @@ public partial class MainWindowViewModel : ViewModelBase
         _manager.UseMonoTemplateFieldCache = true;
         _manager.UseTemplateFieldCache = true;
         _manager.UseQuickLookup = true;
+
+        if (ConfigurationManager.Settings.DefaultGamePath is not null)
+        {
+            FileOpenCatalog();
+        }
     }
 
     public async Task<string?> PickScene(string ggmPath)
