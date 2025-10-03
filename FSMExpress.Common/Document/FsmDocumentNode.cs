@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System.Drawing;
 
 namespace FSMExpress.Common.Document;
@@ -12,6 +12,22 @@ public partial class FsmDocumentNode(string name) : ObservableObject
     public Color TransitionColor { get; set; } = Color.Transparent;
     public List<FsmDocumentNodeTransition> Transitions { get; set; } = [];
     public List<FsmDocumentNodeField> Fields { get; set; } = [];
+    public IEnumerable<FsmDocumentNodeField> FieldsWithClassIndexed
+    {
+        get
+        {
+            var enumerator = Fields.GetEnumerator();
+            int index = 0;
+
+            while (enumerator.MoveNext())
+            {
+                var field = enumerator.Current;
+                yield return field is FsmDocumentNodeClassField classField
+                    ? new FsmDocumentNodeIndexedClassField(classField, index++)
+                    : field;
+            }
+        }
+    }
 
     // add all properties that can change here.
     // we might just make all fields changable in the future.

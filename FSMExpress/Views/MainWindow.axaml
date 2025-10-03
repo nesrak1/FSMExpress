@@ -25,6 +25,22 @@
 
   <!-- this all needs to move with the ItemsControl sidebar -->
   <Window.DataTemplates>
+    <DataTemplate DataType="{x:Type fcd:FsmDocumentNodeIndexedClassField}">
+      <TextBlock
+        Text="{Binding Name}"
+        HorizontalAlignment="Stretch"
+        FontWeight="Bold"
+        Padding="5"
+        Height="28">
+        <TextBlock.Background>
+          <MultiBinding Converter="{StaticResource BoolObjectConverter}">
+            <Binding Path="IsEnabled" />
+            <DynamicResource ResourceKey="ListHeaderNormal" />
+            <DynamicResource ResourceKey="ListHeaderDisabled" />
+          </MultiBinding>
+        </TextBlock.Background>
+      </TextBlock>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type fcd:FsmDocumentNodeClassField}">
       <TextBlock
         Text="{Binding TypeRef.ClassName}"
@@ -194,7 +210,7 @@
         <TabItem Header="State">
           <!-- todo: move to own control -->
           <ScrollViewer>
-            <ItemsControl ItemsSource="{Binding SelectedNode.Fields}" />
+            <ItemsControl ItemsSource="{Binding SelectedNode.FieldsWithClassIndexed}" />
           </ScrollViewer>
         </TabItem>
         <TabItem Header="Events">
