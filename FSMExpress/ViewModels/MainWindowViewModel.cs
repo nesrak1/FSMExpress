@@ -303,6 +303,7 @@ public partial class MainWindowViewModel : ViewModelBase
             return;
 
         ConfigurationManager.Settings.DefaultGamePath = Path.GetDirectoryName(ggmPath);
+        FileOpenCatalog();
     }
 
     public void CloseTab()
