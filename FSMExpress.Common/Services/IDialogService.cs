@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace FSMExpress.Services;
+﻿namespace FSMExpress.Common.Services;
 public interface IDialogService
 {
     Task ShowDialog(IDialogAware viewModel);

@@ -4,7 +4,7 @@ using Avalonia.Data;
 using Avalonia.Input;
 using Avalonia.Media;
 using FSMExpress.Common.Document;
-using FSMExpress.Logic.Util;
+using FSMExpress.Common.Logic.Util;
 
 namespace FSMExpress.Controls.FsmCanvas;
 public class FsmCanvasControl : Grid

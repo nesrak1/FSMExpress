@@ -2,9 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:dlg="using:FSMExpress.ViewModels.Dialogs"
+             xmlns:dlg="clr-namespace:FSMExpress.Common.ViewModels.Dialogs;assembly=FSMExpress.Common"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="160"
-             x:Class="FSMExpress.Views.Dialogs.MessageBoxView"
+             x:Class="FSMExpress.Common.Views.Dialogs.MessageBoxView"
              x:DataType="dlg:MessageBoxViewModel">
   <Design.DataContext>
     <dlg:MessageBoxViewModel />

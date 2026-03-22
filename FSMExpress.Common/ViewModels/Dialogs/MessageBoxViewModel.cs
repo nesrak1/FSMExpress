@@ -2,12 +2,9 @@
 using Avalonia.Controls.Templates;
 using Avalonia.Metadata;
 using CommunityToolkit.Mvvm.ComponentModel;
-using FSMExpress.Services;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using FSMExpress.Common.Services;
 
-namespace FSMExpress.ViewModels.Dialogs;
+namespace FSMExpress.Common.ViewModels.Dialogs;
 public partial class MessageBoxViewModel : ViewModelBase, IDialogAware<MessageBoxResult?>
 {
     [ObservableProperty]

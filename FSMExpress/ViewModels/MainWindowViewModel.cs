@@ -6,11 +6,12 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using FSMExpress.Common.Assets;
 using FSMExpress.Common.Document;
+using FSMExpress.Common.Logic.Util;
+using FSMExpress.Common.Services;
+using FSMExpress.Common.ViewModels;
 using FSMExpress.Logic.Configuration;
 using FSMExpress.Logic.Fsm;
-using FSMExpress.Logic.Util;
 using FSMExpress.PlayMaker;
-using FSMExpress.Services;
 using FSMExpress.ViewModels.Dialogs;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace FSMExpress.ViewModels;
+
 public partial class MainWindowViewModel : ViewModelBase
 {
     private const string DEFAULT_TITLE_TEXT = "FSMExpress";
@@ -71,7 +73,28 @@ public partial class MainWindowViewModel : ViewModelBase
     public async void Loaded()
     {
         // load catalog on startup if game path already set (most likely scenario)
-        await TryLoadCatalog();
+        var loadedCatalog = await TryLoadCatalog();
+
+        // map loading test for silksong
+        //if (loadedCatalog && _catalog is not null)
+        //{
+        //    if (ConfigurationManager.Settings.DefaultGamePath is not { } gamePath)
+        //        return;
+
+        //    var dialogService = Ioc.Default.GetRequiredService<IDialogService>();
+        //    var levelName = await dialogService.ShowDialog(new MapSelectorViewModel(_manager, _catalog, gamePath));
+        //    if (levelName is null)
+        //        return;
+
+        //    var selectedFsms = await PickFsms(Path.Combine(gamePath, "StreamingAssets", "aa", "StandaloneWindows64", "scenes_scenes_scenes", $"{levelName.ToLowerInvariant()}.bundle"));
+        //    if (selectedFsms is null)
+        //        return;
+
+        //    foreach (var fsm in selectedFsms)
+        //    {
+        //        LoadPlaymakerFsm(fsm);
+        //    }
+        //}
     }
 
     public async Task<string?> PickScene(string ggmPath)
@@ -107,7 +130,7 @@ public partial class MainWindowViewModel : ViewModelBase
             }
 
             var bunInst = _manager.LoadBundleFile(filePath);
-            var maybeFileInst = LoadBundleMainFile(bunInst);
+            var maybeFileInst = _manager.LoadBundleMainFile(bunInst);
             if (maybeFileInst == null)
             {
                 await MessageBoxUtil.ShowDialog("Unsupported type", "Sorry, unsure which file to open in this bundle.");
@@ -463,7 +486,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 bunInst = _manager.LoadBundleFile(depPath);
 
             // ignore result, we just want the bundle loaded
-            LoadBundleMainFile(bunInst);
+            _manager.LoadBundleMainFile(bunInst);
 
             if ((i % 5) != 0)
             {
@@ -473,16 +496,5 @@ public partial class MainWindowViewModel : ViewModelBase
         }
 
         TitleText = DEFAULT_TITLE_TEXT;
-    }
-
-    private AssetsFileInstance? LoadBundleMainFile(BundleFileInstance bunInst)
-    {
-        var dirInf = bunInst.file.BlockAndDirInfo.DirectoryInfos.FirstOrDefault(i => (i.Flags & 4) != 0 && !i.Name.EndsWith(".sharedAssets"));
-        if (dirInf is not null)
-        {
-            return _manager.LoadAssetsFileFromBundle(bunInst, dirInf.Name);
-        }
-
-        return null;
     }
 }

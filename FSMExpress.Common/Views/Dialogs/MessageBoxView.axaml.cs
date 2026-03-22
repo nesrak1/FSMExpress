@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace FSMExpress.Views.Dialogs;
+namespace FSMExpress.Common.Views.Dialogs;
 public partial class MessageBoxView : UserControl
 {
     public MessageBoxView()

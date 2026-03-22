@@ -1,8 +1,6 @@
 ﻿using Avalonia.Platform.Storage;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace FSMExpress.Logic.Util;
+namespace FSMExpress.Common.Logic.Util;
 public static class FileDialogUtils
 {
     public static string[] GetOpenFileDialogFiles(IReadOnlyList<IStorageFile> files)

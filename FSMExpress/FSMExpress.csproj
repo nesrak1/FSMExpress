@@ -30,6 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FSMExpress.Common\FSMExpress.Common.csproj" />
     <ProjectReference Include="..\FSMExpress.PlayMaker\FSMExpress.PlayMaker.csproj" />
+    <ProjectReference Include="..\FSMExpress.Silksong\FSMExpress.Silksong.csproj" />
   </ItemGroup>
 
   <ItemGroup>

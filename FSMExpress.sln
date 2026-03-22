@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSMExpress.PlayMaker", "FSM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSMExpress.Common", "FSMExpress.Common\FSMExpress.Common.csproj", "{56984B37-0E83-417C-9BBF-B2E7B7A56C4D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSMExpress.Silksong", "FSMExpress.Silksong\FSMExpress.Silksong.csproj", "{28A20256-AF17-4E2C-9889-7F49B7D8450E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{56984B37-0E83-417C-9BBF-B2E7B7A56C4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56984B37-0E83-417C-9BBF-B2E7B7A56C4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56984B37-0E83-417C-9BBF-B2E7B7A56C4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28A20256-AF17-4E2C-9889-7F49B7D8450E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28A20256-AF17-4E2C-9889-7F49B7D8450E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28A20256-AF17-4E2C-9889-7F49B7D8450E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28A20256-AF17-4E2C-9889-7F49B7D8450E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

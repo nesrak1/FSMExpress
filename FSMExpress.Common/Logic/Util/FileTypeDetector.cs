@@ -1,8 +1,7 @@
 ﻿using AssetsTools.NET;
-using System.IO;
 using System.Text.RegularExpressions;
 
-namespace FSMExpress.Logic.Util;
+namespace FSMExpress.Common.Logic.Util;
 public static partial class FileTypeDetector
 {
     public static DetectedFileType DetectFileType(string filePath)

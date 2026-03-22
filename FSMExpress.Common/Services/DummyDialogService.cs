@@ -1,7 +1,5 @@
-﻿using System.Threading.Tasks;
-
-namespace FSMExpress.Services;
-internal class DummyDialogService : IDialogService
+﻿namespace FSMExpress.Common.Services;
+public class DummyDialogService : IDialogService
 {
     public Task ShowDialog(IDialogAware viewModel)
     {

@@ -1,10 +1,8 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
-using System;
-using System.Threading.Tasks;
 
-namespace FSMExpress.Services;
+namespace FSMExpress.Common.Services;
 public class DialogService(Window mainWindow, ViewLocator viewLocator) : IDialogService
 {
     private readonly WindowIcon _winIcon = new(new Bitmap(AssetLoader.Open(new Uri("avares://FSMExpress/Assets/icon.png"))));

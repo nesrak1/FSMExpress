@@ -4,9 +4,13 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AssetRipper.TextureDecoder" Version="2.1.1" />
+    <PackageReference Include="Avalonia" Version="11.2.8" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.2.8" />
     <PackageReference Include="OneOf" Version="3.0.271" />
     <PackageReference Include="OneOf.SourceGenerator" Version="3.0.271" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />

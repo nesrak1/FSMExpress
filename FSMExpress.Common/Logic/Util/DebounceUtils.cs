@@ -1,9 +1,6 @@
 ﻿using Avalonia.Threading;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace FSMExpress.Util;
+namespace FSMExpress.Common.Util;
 public static class DebounceUtils
 {
     public static Action<T> Debounce<T>(Action<T> func, int milliseconds = 300)

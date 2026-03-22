@@ -4,7 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Platform.Storage;
 using Avalonia.VisualTree;
 
-namespace FSMExpress.Services;
+namespace FSMExpress.Common.Services;
 public static class StorageService
 {
     public static FilePickerFileType Any { get; } = new("All")

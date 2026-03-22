@@ -1,10 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
-using FSMExpress.Services;
-using FSMExpress.ViewModels.Dialogs;
-using System.Linq;
-using System.Threading.Tasks;
+using FSMExpress.Common.Services;
+using FSMExpress.Common.ViewModels.Dialogs;
 
-namespace FSMExpress.Logic.Util;
+namespace FSMExpress.Common.Logic.Util;
 public class MessageBoxUtil
 {
     public static async Task<MessageBoxResult> ShowDialog(string header, string message)

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace FSMExpress.Services;
+﻿namespace FSMExpress.Common.Services;
 public interface IDialogAware
 {
     public string Title { get; }

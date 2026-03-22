@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System.Numerics;
 
-namespace FSMExpress.Logic.Util;
+namespace FSMExpress.Common.Logic.Util;
 public class MathUtils
 {
     public static Matrix4x4 AvaloniaToSystemMatrix(Matrix amatrix)

@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace FSMExpress.ViewModels;
+namespace FSMExpress.Common.ViewModels;
 public class ViewModelBase : ObservableObject
 {
 }

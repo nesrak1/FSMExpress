@@ -1,12 +1,12 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="FSMExpress.App"
-             xmlns:local="using:FSMExpress"
+             xmlns:com="using:FSMExpress.Common"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
-        <local:ViewLocator/>
+        <com:ViewLocator/>
     </Application.DataTemplates>
   
     <Application.Styles>

@@ -1,19 +1,18 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using FSMExpress.ViewModels;
-using System;
+using FSMExpress.Common.ViewModels;
 
-namespace FSMExpress;
+namespace FSMExpress.Common;
 public class ViewLocator : IDataTemplate
 {
-
     public Control? Build(object? data)
     {
         if (data is null)
             return null;
 
-        var name = data.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
-        var type = Type.GetType(name);
+        var viewModelType = data.GetType();
+        var viewName = viewModelType.FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
+        var type = viewModelType.Assembly.GetType(viewName);
 
         if (type != null)
         {
@@ -22,7 +21,7 @@ public class ViewLocator : IDataTemplate
             return control;
         }
 
-        return new TextBlock { Text = "Not Found: " + name };
+        return new TextBlock { Text = "Not Found: " + viewName };
     }
 
     public bool Match(object? data)
