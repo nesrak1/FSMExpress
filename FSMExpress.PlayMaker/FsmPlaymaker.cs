@@ -8,6 +8,7 @@ using DrawingColor = System.Drawing.Color;
 using EngineColor = FSMExpress.PlayMaker.Structs.Color;
 
 namespace FSMExpress.PlayMaker;
+
 public class FsmPlaymaker : IFsmMonoBehaviour
 {
     public int Version { get; set; } = -1;
@@ -550,6 +551,8 @@ public class FsmPlaymaker : IFsmMonoBehaviour
         string valueName;
         if (obj is NamedVariable nv)
             valueName = nv.Name;
+        else if (obj is FsmOwnerDefault fod)
+            valueName = fod.GameObject?.Name ?? string.Empty;
         else
             valueName = string.Empty;
 
