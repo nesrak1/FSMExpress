@@ -1,5 +1,6 @@
 ﻿using AddressablesTools;
 using AddressablesTools.Catalog;
+using AssetsTools.NET;
 using AssetsTools.NET.Extra;
 using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -171,10 +172,36 @@ public partial class MainWindowViewModel : ViewModelBase
         var fsmBaseField = fsmExt.baseField;
         var fsmFileInst = fsmExt.file;
 
-        var fsmObject = new FsmPlaymaker(new AfAssetField(fsmBaseField["fsm"], new AfAssetNamer(_manager, fsmFileInst)));
+        // read fsm
+        var fsmField = fsmBaseField["fsm"];
+        var namer = new AfAssetNamer(_manager, fsmFileInst);
+        var fsmAssetField = new AfAssetField(fsmField, namer);
+
+        // attempt to load template
+        AfAssetField? tmplFsmAssetField = null;
+        if (!fsmBaseField["fsmTemplate"].IsDummy)
+        {
+            var fsmTmplPtrField = AssetPPtr.FromField(fsmBaseField["fsmTemplate"]);
+            if (!fsmTmplPtrField.IsNull())
+            {
+                // there is a template, attempt to read it
+                var fsmTmplExt = _manager.GetExtAsset(fsmFileInst, fsmTmplPtrField.FileId, fsmTmplPtrField.PathId);
+
+                if (fsmTmplExt.baseField is not null)
+                {
+                    var tmplFsmBaseField = fsmTmplExt.baseField;
+                    var tmplFsmFileInst = fsmTmplExt.file;
+
+                    var tmplFsmField = tmplFsmBaseField["fsm"];
+                    var tmplNamer = new AfAssetNamer(_manager, tmplFsmFileInst);
+                    tmplFsmAssetField = new AfAssetField(tmplFsmField, tmplNamer);
+                }
+            }
+        }
+
+        var fsmObject = new FsmPlaymaker(fsmAssetField, tmplFsmAssetField);
 
         // get gameobject name
-        var namer = new AfAssetNamer(_manager, fsmFileInst);
         var goPtr = fsmBaseField["m_GameObject"];
         fsmObject.GoName = namer.GetName(goPtr["m_FileID"].AsInt, goPtr["m_PathID"].AsLong) ?? "<Unknown GO>";
 

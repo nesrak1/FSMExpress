@@ -27,17 +27,28 @@ public class FsmPlaymaker : IFsmMonoBehaviour
     const string PM_NAMESPACE = "HutongGames.PlayMaker";
     const string PM_ASSEMBLY = "PlayMaker.dll";
 
-    public FsmPlaymaker(IAssetField field)
+    public FsmPlaymaker(IAssetField field, IAssetField? tmplField)
     {
-        Version = field.GetValue<int>("dataVersion");
-        Name = field.GetValue<string>("name");
+        var mainField = tmplField ?? field;
+
+        Version = mainField.GetValue<int>("dataVersion");
+        Name = mainField.GetValue<string>("name");
         GoName = string.Empty; // needs filling from outside of constructor
 
-        var startStateName = field.GetValue<string>("startState");
-        States = field.GetValueArray("states", x => new FsmState(x));
-        Events = field.GetValueArray("events", x => new FsmEvent(x));
-        GlobalTransitions = field.GetValueArray("globalTransitions", x => new FsmTransition(x));
-        Variables = new FsmVariables(field.GetField("variables"));
+        var startStateName = mainField.GetValue<string>("startState");
+        States = mainField.GetValueArray("states", x => new FsmState(x));
+        Events = mainField.GetValueArray("events", x => new FsmEvent(x));
+        GlobalTransitions = mainField.GetValueArray("globalTransitions", x => new FsmTransition(x));
+        Variables = new FsmVariables(mainField.GetField("variables"));
+        if (tmplField is not null)
+        {
+            // if we were to ever support writing, we couldn't do this because
+            // we "forget" which variable is from the template and which is
+            // from the main FSM. but we're not there yet, so why not replace.
+            var topVariables = new FsmVariables(field.GetField("variables"));
+            Variables.LoadNonTemplateValues(topVariables);
+        }
+
         StartState = States.Find(s => s.Name == startStateName);
     }
 

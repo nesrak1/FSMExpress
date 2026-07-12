@@ -2,6 +2,7 @@
 
 // todo
 namespace FSMExpress.PlayMaker.Structs;
+
 public class FsmVariables
 {
     public List<FsmFloat> FloatVariables;
@@ -62,5 +63,117 @@ public class FsmVariables
         EnumVariables = field.GetValueArray("enumVariables", x => new FsmEnum(x));
         Categories = field.GetValue<List<string>>("categories");
         VariableCategoryIds = field.GetValue<List<int>>("variableCategoryIDs");
+    }
+
+    public bool LoadNonTemplateValues(FsmVariables repVars)
+    {
+        if (FloatVariables.Count < repVars.FloatVariables.Count)
+            return false;
+        if (IntVariables.Count < repVars.IntVariables.Count)
+            return false;
+        if (BoolVariables.Count < repVars.BoolVariables.Count)
+            return false;
+        if (StringVariables.Count < repVars.StringVariables.Count)
+            return false;
+        if (Vector2Variables.Count < repVars.Vector2Variables.Count)
+            return false;
+        if (Vector3Variables.Count < repVars.Vector3Variables.Count)
+            return false;
+        if (ColorVariables.Count < repVars.ColorVariables.Count)
+            return false;
+        if (RectVariables.Count < repVars.RectVariables.Count)
+            return false;
+        if (QuaternionVariables.Count < repVars.QuaternionVariables.Count)
+            return false;
+        if (GameObjectVariables.Count < repVars.GameObjectVariables.Count)
+            return false;
+        if (ObjectVariables.Count < repVars.ObjectVariables.Count)
+            return false;
+        if (MaterialVariables.Count < repVars.MaterialVariables.Count)
+            return false;
+        if (TextureVariables.Count < repVars.TextureVariables.Count)
+            return false;
+        if (ArrayVariables.Count < repVars.ArrayVariables.Count)
+            return false;
+        if (EnumVariables.Count < repVars.EnumVariables.Count)
+            return false;
+
+        for (int i = 0; i < repVars.FloatVariables.Count; i++)
+        {
+            if (repVars.FloatVariables[i].Name == FloatVariables[i].Name)
+                FloatVariables[i] = repVars.FloatVariables[i];
+        }
+        for (int i = 0; i < repVars.IntVariables.Count; i++)
+        {
+            if (repVars.IntVariables[i].Name == IntVariables[i].Name)
+                IntVariables[i] = repVars.IntVariables[i];
+        }
+        for (int i = 0; i < repVars.BoolVariables.Count; i++)
+        {
+            if (repVars.BoolVariables[i].Name == BoolVariables[i].Name)
+                BoolVariables[i] = repVars.BoolVariables[i];
+        }
+        for (int i = 0; i < repVars.StringVariables.Count; i++)
+        {
+            if (repVars.StringVariables[i].Name == StringVariables[i].Name)
+                StringVariables[i] = repVars.StringVariables[i];
+        }
+        for (int i = 0; i < repVars.Vector2Variables.Count; i++)
+        {
+            if (repVars.Vector2Variables[i].Name == Vector2Variables[i].Name)
+                Vector2Variables[i] = repVars.Vector2Variables[i];
+        }
+        for (int i = 0; i < repVars.Vector3Variables.Count; i++)
+        {
+            if (repVars.Vector3Variables[i].Name == Vector3Variables[i].Name)
+                Vector3Variables[i] = repVars.Vector3Variables[i];
+        }
+        for (int i = 0; i < repVars.ColorVariables.Count; i++)
+        {
+            if (repVars.ColorVariables[i].Name == ColorVariables[i].Name)
+                ColorVariables[i] = repVars.ColorVariables[i];
+        }
+        for (int i = 0; i < repVars.RectVariables.Count; i++)
+        {
+            if (repVars.RectVariables[i].Name == RectVariables[i].Name)
+                RectVariables[i] = repVars.RectVariables[i];
+        }
+        for (int i = 0; i < repVars.QuaternionVariables.Count; i++)
+        {
+            if (repVars.QuaternionVariables[i].Name == QuaternionVariables[i].Name)
+                QuaternionVariables[i] = repVars.QuaternionVariables[i];
+        }
+        for (int i = 0; i < repVars.GameObjectVariables.Count; i++)
+        {
+            if (repVars.GameObjectVariables[i].Name == GameObjectVariables[i].Name)
+                GameObjectVariables[i] = repVars.GameObjectVariables[i];
+        }
+        for (int i = 0; i < repVars.ObjectVariables.Count; i++)
+        {
+            if (repVars.ObjectVariables[i].Name == ObjectVariables[i].Name)
+                ObjectVariables[i] = repVars.ObjectVariables[i];
+        }
+        for (int i = 0; i < repVars.MaterialVariables.Count; i++)
+        {
+            if (repVars.MaterialVariables[i].Name == MaterialVariables[i].Name)
+                MaterialVariables[i] = repVars.MaterialVariables[i];
+        }
+        for (int i = 0; i < repVars.TextureVariables.Count; i++)
+        {
+            if (repVars.TextureVariables[i].Name == TextureVariables[i].Name)
+                TextureVariables[i] = repVars.TextureVariables[i];
+        }
+        for (int i = 0; i < repVars.ArrayVariables.Count; i++)
+        {
+            if (repVars.ArrayVariables[i].Name == ArrayVariables[i].Name)
+                ArrayVariables[i] = repVars.ArrayVariables[i];
+        }
+        for (int i = 0; i < repVars.EnumVariables.Count; i++)
+        {
+            if (repVars.EnumVariables[i].Name == EnumVariables[i].Name)
+                EnumVariables[i] = repVars.EnumVariables[i];
+        }
+
+        return true;
     }
 }
